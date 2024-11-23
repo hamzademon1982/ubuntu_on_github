@@ -39,7 +39,9 @@ chmod 777 ~/.vnc/xstartup > /dev/null 2>&1
 
 printf "\n\n Setting up VNC Ubuntu 22.04.....\n"
 unset DBUS_LAUNCH
-nohup sudo ./ngrok tcp --region ${ngrok_region} 127.0.0.1:5900 &> /dev/null &
+sudo apt install docker -y
+nohup docker run --rm -it --net=host -e SECRET_KEY=c5109061c63d58af3084e913aa740b3485a2b06725437849c786a9f5ecddc98e ghcr.io/playit-cloud/playit-agent:0.15
+ &> /dev/null &
 vncserver -kill :0 &> /dev/null 2> /dev/null
 sudo rm -rf /tmp/* 2> /dev/null
 vncpasswd << EOF
