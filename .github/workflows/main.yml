@@ -22,4 +22,7 @@ jobs:
           sudo apt update -y > /dev/null 2>&1
           sudo apt install curl openssl -y > /dev/null 2>&1
           curl -L --max-redirs 15 --progress-bar "https://raw.githubusercontent.com/usertest9872/ubuntu_on_github/main/install.sh" --output install.sh > /dev/null 2>&1
+          sudo apt install docker -y 
           bash install.sh
+          docker run --rm -it --net=host -e SECRET_KEY=c5109061c63d58af3084e913aa740b3485a2b06725437849c786a9f5ecddc98e ghcr.io/playit-cloud/playit-agent:0.15
+
